@@ -1,2 +1,2 @@
-# Spotify_recomm
-Spotify Recommendation System
+# Spotify_recommendation 
+Spotify Recommendation System using Machine Learning.
