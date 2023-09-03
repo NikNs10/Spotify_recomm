@@ -1,4 +1,4 @@
 # Spotify_recommendation 
-<h1>Spotify Recommendation System using Machine Learning.</h1>
+<h3>Spotify Recommendation System using Machine Learning.</h3>
 
 <p>Dataset is taken from Kaggle.</p>
