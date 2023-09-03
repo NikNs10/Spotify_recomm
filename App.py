@@ -50,12 +50,28 @@ data_norm.set_index(data_sort.loc[:, 'track_id'], inplace=True)
 
 x = list(data_norm.iloc[19])
 
-
 data_result = pd.DataFrame()
 data_result['euclidean'] = [distance.euclidean(obj, x) for index, obj in data_norm.iterrows()]
 data_result['track_id'] = data_norm.index
 
+data_sug = data_result.sort_values(by=['euclidean']).iloc[:6]
+data_big = data_sort.set_index(data_sort.loc[:, 'track_id'])
+track_list = pd.DataFrame()
+for i in list(data_sug.loc[:, 'track_id']):
+    if i in list(data_sort.loc[:, 'track_id']):
+        track_info = data_big.loc[[i], ['track_name', 'artists']]
+        #track_list = track_list.append(track_info)
+        track_list = pd.concat([track_list, track_info], ignore_index=True)
 
+recomended = track_list.values.tolist()
+print(f"""You've just listened:   {recomended[0][0]} - {recomended[0][1]}
+Now you may listen :
+'{recomended[1][0]} - {recomended[1][1]}'
+Or any of:
+'{recomended[2][0]} - {recomended[2][1]}'
+'{recomended[3][0]} - {recomended[3][1]}'
+'{recomended[4][0]} - {recomended[4][1]}'
+'{recomended[5][0]} - {recomended[5][1]}'  """)
 
 
 
